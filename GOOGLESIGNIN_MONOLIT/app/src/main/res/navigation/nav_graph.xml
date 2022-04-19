@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_main"
+    app:startDestination="@id/firstFragment">
+
+    <fragment
+        android:id="@+id/firstFragment"
+        android:name="com.example.googlesignin_monolit.firstFragment"
+        android:label="fragment_first"
+        tools:layout="@layout/fragment_first" >
+        <action
+            android:id="@+id/action_firstFragment_to_authentication2"
+            app:destination="@id/authentication" />
+        <action
+            android:id="@+id/action_firstFragment_to_application2"
+            app:destination="@id/application" />
+    </fragment>
+    <fragment
+        android:id="@+id/authentication"
+        android:name="com.example.googlesignin_monolit.Authentication"
+        android:label="fragment_authentication"
+        tools:layout="@layout/fragment_authentication" >
+        <action
+            android:id="@+id/action_authentication_to_firstFragment"
+            app:destination="@id/firstFragment" />
+        <action
+            android:id="@+id/action_authentication_to_application"
+            app:destination="@id/application" />
+    </fragment>
+    <fragment
+        android:id="@+id/application"
+        android:name="com.example.googlesignin_monolit.Application"
+        android:label="fragment_application"
+        tools:layout="@layout/fragment_application" />
+</navigation>

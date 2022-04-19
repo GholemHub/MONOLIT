@@ -1,0 +1,76 @@
+{
+  "project_info": {
+    "project_number": "292272453790",
+    "project_id": "moneylab-346914",
+    "storage_bucket": "moneylab-346914.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:292272453790:android:d3995fdb75b67a42d6e38f",
+        "android_client_info": {
+          "package_name": "com.example.googlesignin_monolit"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "292272453790-7rao2g8lb5bdumjja84pmeutr6314hbt.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA0E1ymIvk5VQcvSusBFOVv0RnYYB7Sgfk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "292272453790-7rao2g8lb5bdumjja84pmeutr6314hbt.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:292272453790:android:4c0a7a192f533ec9d6e38f",
+        "android_client_info": {
+          "package_name": "com.gholemhub.moneylab"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "292272453790-n677qha315n0ovgmdn33162uajt0g4ge.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.gholemhub.moneylab",
+            "certificate_hash": "0772643921b46ac470e912ee385b56cda2b82a13"
+          }
+        },
+        {
+          "client_id": "292272453790-7rao2g8lb5bdumjja84pmeutr6314hbt.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA0E1ymIvk5VQcvSusBFOVv0RnYYB7Sgfk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "292272453790-7rao2g8lb5bdumjja84pmeutr6314hbt.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
