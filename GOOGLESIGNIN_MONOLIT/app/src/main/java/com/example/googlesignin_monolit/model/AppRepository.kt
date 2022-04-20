@@ -1,6 +1,10 @@
 package com.example.googlesignin_monolit.model
 
+import android.content.Context
+import android.content.Context.COMPANION_DEVICE_SERVICE
+import android.content.Context.MODE_PRIVATE
 import android.content.Intent
+import android.content.SharedPreferences
 import android.provider.Settings.Global.getString
 import android.util.Log
 import android.view.View
@@ -26,13 +30,16 @@ class AppRepository {
 
     lateinit var launcher: ActivityResultLauncher<Intent>
     lateinit var account: GoogleSignInAccount
-    var auth: FirebaseAuth
+    //var auth: FirebaseAuth
 
     companion object{
         lateinit var main: MainActivity
             @JvmStatic
             lateinit var repository: AppRepository
             lateinit var viewToRestore: View
+            lateinit var auth: FirebaseAuth
+
+
         }
 
 
@@ -49,11 +56,13 @@ class AppRepository {
     }
 
 
-    fun firebaseAuthWithGoogle(idTocken: String){
-        val credential = GoogleAuthProvider.getCredential(idTocken, null)
-        auth.signInWithCredential(credential).addOnCompleteListener {
+    fun firebaseAuthWithGoogle(idTocken: GoogleSignInAccount){
+        val credential = GoogleAuthProvider.getCredential(idTocken.idToken, null)
+        auth.signInWithCredential(credential)
+            .addOnCompleteListener(main) {
             if(it.isSuccessful){
 
+                //SharedPreferences1()
                 Navigation.findNavController(viewToRestore).navigate(R.id.action_authentication_to_application)
 
                 Log.d("TAG", "Google sign in done")
@@ -62,6 +71,10 @@ class AppRepository {
             }
         }
     }
+
+
+
+
     fun getClient(): GoogleSignInClient {
         Log.d("TAG", "getClient")
         val gso = GoogleSignInOptions
@@ -73,3 +86,34 @@ class AppRepository {
         return GoogleSignIn.getClient(main, gso)
     }
 }
+
+/*
+ private fun signIn() {
+        val signInIntent: Intent = mGoogleSignInClient!!.getSignInIntent()
+        startActivityForResult(signInIntent, RC_SIGN_IN)
+    }
+
+    private val RC_SIGN_IN = 123
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+
+        // Result returned from launching the Intent from GoogleSignInApi.getSignInIntent(...);
+        if (requestCode == RC_SIGN_IN) {
+            val task: Task<GoogleSignInAccount> = GoogleSignIn.getSignedInAccountFromIntent(data)
+            try {
+                // Google Sign In was successful, authenticate with Firebase
+                val account: GoogleSignInAccount = task.getResult(ApiException::class.java)
+                    repository.firebaseAuthWithGoogle(account)
+            } catch (e: ApiException) {
+                // Google Sign In failed, update UI appropriately
+                // ...
+                d("TAG", "Google sign in error")
+
+                //Toast.makeText(this, e.message, Toast.LENGTH_SHORT).show()
+            }
+        }
+    }
+
+
+* */

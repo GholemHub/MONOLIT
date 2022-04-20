@@ -33,5 +33,9 @@
         android:id="@+id/application"
         android:name="com.example.googlesignin_monolit.Application"
         android:label="fragment_application"
-        tools:layout="@layout/fragment_application" />
+        tools:layout="@layout/fragment_application" >
+        <action
+            android:id="@+id/action_application_to_firstFragment"
+            app:destination="@id/firstFragment" />
+    </fragment>
 </navigation>

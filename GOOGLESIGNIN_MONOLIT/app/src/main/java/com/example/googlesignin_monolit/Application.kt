@@ -1,30 +1,19 @@
 package com.example.googlesignin_monolit
 
-import android.content.Intent
 import android.os.Bundle
-import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.activity.result.ActivityResultLauncher
-import androidx.activity.result.contract.ActivityResultContracts
-import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
-import androidx.fragment.app.FragmentManager
-import androidx.fragment.app.FragmentTransaction
+import androidx.fragment.app.Fragment
 import androidx.navigation.Navigation
 import com.example.googlesignin_monolit.databinding.FragmentApplicationBinding
-import com.example.googlesignin_monolit.databinding.FragmentAuthenticationBinding
+import com.example.googlesignin_monolit.model.AppRepository
+import com.example.googlesignin_monolit.model.AppRepository.Companion.auth
+import com.example.googlesignin_monolit.model.AppRepository.Companion.main
+import com.example.googlesignin_monolit.model.AppRepository.Companion.repository
 import com.google.android.gms.auth.api.signin.GoogleSignIn
-import com.google.android.gms.auth.api.signin.GoogleSignInAccount
-import com.google.android.gms.auth.api.signin.GoogleSignInClient
-import com.google.android.gms.auth.api.signin.GoogleSignInOptions
-import com.google.android.gms.common.api.ApiException
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.GoogleAuthProvider
-import com.google.firebase.auth.ktx.auth
-import com.google.firebase.ktx.Firebase
 
 class Application : Fragment() {
 
@@ -40,14 +29,20 @@ class Application : Fragment() {
         )
 
 
+        //val signInAccount = GoogleSignIn.getLastSignedInAccount(MainActivity())
 
-        binding.button.setOnClickListener {
+       // binding.textGoogle.text = signInAccount?.email.toString()
 
+        //d("TAG", "Email: ${auth.currentUser?.uid}")
+
+        binding.logout.setOnClickListener {
+            auth.signOut()
+            repository = AppRepository()
+            auth = FirebaseAuth.getInstance()
+            Navigation.findNavController(binding.root).navigate(R.id.action_application_to_firstFragment)
         }
-
 
         return binding.root
     }
-
 
 }
